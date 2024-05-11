@@ -1,2 +1,3 @@
-# notes
-Computer science notes
+# Notes
+
+1. Data Structures & Algorithms
