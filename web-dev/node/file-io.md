@@ -49,17 +49,21 @@ async function readFile() {
 
 ## Backend Example
 
+- Updates a JSON file.
 - `if (err.code === "ENOENT")`: Unable to find file.
 
 ```javascript
 const express = require("express");
 const fs = require("fs/promises");
 
-app.get("/read", async (req, res) => {
+app.post("/read", async (req, res) => {
   try { 
     let data = await fs.readFile("file.json");
     data = JSON.parse(data);
-    res.json(data);
+    data["new"] = "new data";
+    data = JSON.stringify(data);
+    await fs.writeFile("file.json");
+    res.type("text").send("Successfully written file.");
   } catch (err) {
     if (err.code === "ENOENT") {
       res.type("text").status(500).send("File not found.");
