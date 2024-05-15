@@ -12,48 +12,68 @@
 ## Structured Query Language (SQL)
 
 - **Definition**: SQL is a *declarative* language, meaning you describe the data you want without specifying how to retrieve it.
-- **Example**:
+
+### Data Definition Language (DDL)
+
+- `CREATE TABLE`: Creates a new table.
 
 ```sql
-CREATE TABLE table_name(
+CREATE TABLE table_name (
     column1 datatype PRIMARY KEY,
     column2 datatype,
     ...
 );
 ```
 
-### Select
+- `DROP TABLE`: Deletes a table.
 
 ```sql
-SELECT * FROM table_name;
+DROP TABLE table_name
 ```
 
-### Distinct
+### Data Manipulation Language (DML)
 
-- Make sure we don't get duplicate sets/
-
-```sql
-SELECT DISTINCT name FROM students;
-```
-
-### Where
+- `SELECT`: Retrieves data from a database.
 
 ```sql
-SELECT * FROM animals WHERE rating > 5;
-SELECT * FROM animals WHERE type = "mammal";
-```
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
 
-### AND / OR
+-- Using DISTINCT to avoid duplicate results
+SELECT DISTINCT column1
+FROM table_name;
 
-```sql
-SELECT * FROM animals WHERE rating > 5 AND type = "mammal";
-SELECT * FROM animals WHERE rating > 5 OR type = "mammal";
-```
+-- Using WHERE to filter results
+SELECT column1, column2
+FROM table_name
+WHERE condition;
 
-### Patterns
+-- Using AND/OR to combine conditions
+SELECT column1, column2
+FROM table_name
+WHERE condition1 AND condition2;
 
-- Wildcard character `%` includes any characters.
+SELECT column1, column2
+FROM table_name
+WHERE condition1 OR condition2;
 
-```sql
-SELECT * FROM animals WHERE description LIKE "%furry%";
+-- Using LIKE for pattern matching
+SELECT column1, column2
+FROM table_name
+WHERE column1 LIKE 'pattern%';
+
+-- Sorting results with ORDER BY
+SELECT column1, column2
+FROM table_name
+ORDER BY column1 ASC;  -- ASC for ascending order
+
+SELECT column1, column2
+FROM table_name
+ORDER BY column1 DESC;  -- DESC for descending order
+
+-- Limiting the number of results with LIMIT
+SELECT column1, column2
+FROM table_name
+LIMIT number;
 ```
