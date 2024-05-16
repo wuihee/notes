@@ -77,3 +77,33 @@ SELECT column1, column2
 FROM table_name
 LIMIT number;
 ```
+
+### SQL Functions
+
+```sql
+SELECT AVG(column_name)
+FROM table_name;
+
+SELECT ROUND(column_name)
+FROM table_name;
+```
+
+### Subqueries
+
+- **Definition**: A subquery is a query within another query. The subquery is executed first, and its result is used by the outer query.
+
+```sql
+-- Subquery in WHERE clause
+SELECT column1, column2
+FROM table_name
+WHERE column1 IN (SELECT column1 FROM another_table WHERE condition);
+
+-- Subquery in FROM clause
+SELECT subquery.column1, subquery.column2
+FROM (SELECT column1, column2 FROM table_name WHERE condition) AS subquery;
+
+-- Subquery in SELECT clause
+SELECT column1,
+    (SELECT COUNT(*) FROM another_table WHERE another_table.foreign_key = table_name.primary_key) AS count_alias
+FROM table_name;
+```
