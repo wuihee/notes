@@ -62,7 +62,7 @@ app.post("/read", async (req, res) => {
     data = JSON.parse(data);
     data["new"] = "new data";
     data = JSON.stringify(data);
-    await fs.writeFile("file.json");
+    await fs.writeFile("file.json", data);
     res.type("text").send("Successfully written file.");
   } catch (err) {
     if (err.code === "ENOENT") {
