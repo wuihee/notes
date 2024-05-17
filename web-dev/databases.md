@@ -78,6 +78,21 @@ FROM table_name
 LIMIT number;
 ```
 
+- `DELETE`: Delete an existing record in the table.
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+
+- `UPDATE`: Modifies existing records in a table.
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
 ### SQL Functions
 
 ```sql
