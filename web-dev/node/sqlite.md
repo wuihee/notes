@@ -14,6 +14,9 @@ npm install sqlite sqlite3
 ### Creating a Database Connection
 
 ```javascript
+const sqlite3 = require("sqlite3");
+const sqlite = require("sqlite");
+
 async function getDBConnection() {
   const db = await sqlite.open({
     filename: "table.db",
