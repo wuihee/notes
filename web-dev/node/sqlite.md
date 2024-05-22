@@ -37,7 +37,7 @@ async function getDBConnection() {
   const db = await getDBConnection();
   const rows = await db.all("SELECT id, name, email FROM users");
   console.log(rows);
-  db.close();
+  await db.close();
 })();
 ```
 
