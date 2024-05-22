@@ -1,4 +1,6 @@
-# Databases
+# SQL
+
+- **Definition**: SQL is a *declarative* language, meaning you describe the data you want without specifying how to retrieve it.
 
 ## Relational Databases
 
@@ -9,11 +11,7 @@
   - **Columns (Attributes)**: Each column represents a data field within the record.
   - **Entries**: All the information in one row constitutes an entry.
 
-## Structured Query Language (SQL)
-
-- **Definition**: SQL is a *declarative* language, meaning you describe the data you want without specifying how to retrieve it.
-
-### Data Definition Language (DDL)
+## Data Definition Language (DDL)
 
 - `CREATE TABLE`: Creates a new table.
 
@@ -31,7 +29,7 @@ CREATE TABLE table_name (
 DROP TABLE table_name
 ```
 
-### Data Manipulation Language (DML)
+## Data Manipulation Language (DML)
 
 - `SELECT`: Retrieves data from a database.
 
@@ -83,6 +81,11 @@ LIMIT number;
 ```sql
 INSERT INTO table_name column1, column2, column3, ...
 VALUES value1, value2, value3, ...;
+
+-- Using RETURNING to get the inserted record
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...)
+RETURNING column1, column2, column3;
 ```
 
 - `UPDATE`: Modifies existing records in a table.
@@ -100,7 +103,7 @@ DELETE FROM table_name
 WHERE condition;
 ```
 
-### SQL Functions
+## SQL Functions
 
 ```sql
 SELECT AVG(column_name)
@@ -110,7 +113,7 @@ SELECT ROUND(column_name)
 FROM table_name;
 ```
 
-### Subqueries
+## Subqueries
 
 - **Definition**: A subquery is a query within another query. The subquery is executed first, and its result is used by the outer query.
 
