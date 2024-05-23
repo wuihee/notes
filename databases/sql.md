@@ -200,5 +200,3 @@ SELECT a.column1, b.column2
 FROM table_name a, table_name b
 WHERE condition;
 ```
-
-These are the basic JOIN operations in SQL. They help in combining data from multiple tables and are crucial for relational database queries.
