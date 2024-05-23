@@ -132,3 +132,73 @@ SELECT column1,
     (SELECT COUNT(*) FROM another_table WHERE another_table.foreign_key = table_name.primary_key) AS count_alias
 FROM table_name;
 ```
+
+## JOIN Operations
+
+JOIN operations are used to combine rows from two or more tables based on a related column between them. Here are the common types of JOINs:
+
+### INNER JOIN
+
+The `INNER JOIN` keyword selects records that have matching values in both tables.
+
+```sql
+SELECT table1.column1, table2.column2
+FROM table1
+INNER JOIN table2
+ON table1.common_column = table2.common_column;
+```
+
+### LEFT JOIN (or LEFT OUTER JOIN)
+
+The `LEFT JOIN` keyword returns all records from the left table (table1), and the matched records from the right table (table2). The result is NULL from the right side if there is no match.
+
+```sql
+SELECT table1.column1, table2.column2
+FROM table1
+LEFT JOIN table2
+ON table1.common_column = table2.common_column;
+```
+
+### RIGHT JOIN (or RIGHT OUTER JOIN)
+
+The `RIGHT JOIN` keyword returns all records from the right table (table2), and the matched records from the left table (table1). The result is NULL from the left side when there is no match.
+
+```sql
+SELECT table1.column1, table2.column2
+FROM table1
+RIGHT JOIN table2
+ON table1.common_column = table2.common_column;
+```
+
+### FULL JOIN (or FULL OUTER JOIN)
+
+The `FULL JOIN` keyword returns all records when there is a match in either left (table1) or right (table2) table records. It returns NULL for the records of the table that does not have a match.
+
+```sql
+SELECT table1.column1, table2.column2
+FROM table1
+FULL JOIN table2
+ON table1.common_column = table2.common_column;
+```
+
+### CROSS JOIN
+
+The `CROSS JOIN` keyword returns the Cartesian product of the two tables. This means that it will return all possible combinations of rows.
+
+```sql
+SELECT table1.column1, table2.column2
+FROM table1
+CROSS JOIN table2;
+```
+
+### SELF JOIN
+
+A `SELF JOIN` is a regular join but the table is joined with itself.
+
+```sql
+SELECT a.column1, b.column2
+FROM table_name a, table_name b
+WHERE condition;
+```
+
+These are the basic JOIN operations in SQL. They help in combining data from multiple tables and are crucial for relational database queries.
