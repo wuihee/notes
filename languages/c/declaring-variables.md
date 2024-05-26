@@ -1,33 +1,34 @@
 # Declaring Variables
 
-## Swapping Variables (Failed)
+## Address Of Operator (`&`)
 
-- The example below fails to permanently swap variables.
+- Retrieves the memory address of the variable.
 
-```c
-void swap(int a, int b) {
-    int t = a;
-    a = b;
-    b = t;
-}
-```
+    ```c
+    int x = 1;
 
-## Swapping Variables (Success)
+    // Prints the location in memory. E.g. 1777181520.
+    printf("%d", &x);
+    ```
 
-- **Pointer**: A variable which *points* to an object in memory.
-- **Indirection (`*`) Operator**: Used to *dereference* pointers. Dereferencing a pointer means that the pointer is no longer a reference - your variable points to the exact location in memory.
-- **Address Of (&) Operator**: Used to get the memory address of a variable.
+## Indirection Operator (`*`)
 
-```c
-void swap(int *pa, int *pb) {
-    int t = *pa;
-    *pa = *pb;
-    *pb = t;
-}
+1. **Pointer Declaration**: Indicates that a variable is a pointer.
 
-void main() {
-    int a = 1;
-    int b = 2;
-    swap(&a, &b);
-}
-```
+    ```c
+    int x = 1;
+    int *px = &x;
+    ```
+
+2. **Dereferencing**: Access the value stored at that point in memory.
+
+    ```c
+    int x = 1;
+    int *px = &x;
+
+    // Prints the location in memory. E.g. 1992030900.
+    printf("%d\n", px);  
+
+    // Prints the value at `px`, which in this case is 1.
+    printf("%d\n", *px);
+    ```
