@@ -1,4 +1,4 @@
-# Declaring Variables
+# Pointers
 
 ## Address Of Operator (`&`)
 
