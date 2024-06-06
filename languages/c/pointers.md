@@ -71,7 +71,7 @@
     int main() {
         int a = 1;
         int b = 2;
-        swap2(&a, &b);                     // 2, 1
+        swap2(&a, &b);                   // 2, 1
         printf("a: %d, b: %d\n", a, b);  // 2, 1
         return 0;
     }
