@@ -42,3 +42,69 @@ function HelloWorld() {
     );
 }
 ```
+
+## JSX
+
+- JSX is syntactic sugar for the React `createElement` function, which allows us to write HTML like code in JavaScript.
+- In JSX we can only return a single root element. An empty tag is called a *fragment*.
+
+```javascript
+function App() {
+    return (
+        <>
+            <h1>Example 1</h1>
+            <h2>Example 2</h2>
+        </>
+    );
+}
+```
+
+- All tags must be closed.
+
+```javascript
+function App() {
+    return (
+        <>
+            <input />
+            <li></li>
+        </>
+    );
+}
+```
+
+- Camel case most attributes. This is because JSX is converted into JavaScript and identifiers like `class` are reserved keywords.
+
+```javascript
+function App() {
+    return (
+        <>
+            <h1 className="eg" strokeWidth="2">Example</h1>
+        </>
+    );
+}
+```
+
+### Using JavaScript in JSX
+
+- We can open a window into JavaScript in JSX by using curly braces, just like Python's f-strings.
+
+```javascript
+export default function App() {
+    return (
+        <h1 className={titleClass}>{title}</h1>
+    );
+}
+```
+
+- We can also pass objects into JSX using double curly braces.
+
+```javascript
+export default function App() {
+    return (
+        <div style={{
+            backgroundColor: 'black',
+            color: 'pink'
+        }}></div>
+    );
+}
+```
