@@ -45,3 +45,51 @@
   ```
 
 ## Using JavaScript in JSX
+
+- We can dynamically specify the contents of JSX by opening a window into JavaScript using curly braces (just like f-strings in Python).
+- **Specify Attributes**:
+
+  ```javascript
+  function App() {
+    let avatar = "imgs/avatar.png";
+    let description = "This is an avatar image";
+
+    return (
+      <img
+        className="avatar"
+        src={avatar}
+        alt={description}
+      />
+    );
+  }
+  ```
+
+- **Specify Text**:
+
+  ```javascript
+  function App() {
+    let title = "My Website":
+    return (
+      <h1>{title}</h1>
+    );
+  }
+  ```
+
+### Double Curlies
+
+- We can pass in objects into JSX using double curlies. This is usually used to specify inline CSS.
+
+  ```javascript
+  function App() {
+    return (
+      <ul style={{
+        backgroundColor: 'black',
+        color: 'pink'
+      }}>
+        <li>Math Homework</li>
+        <li>CS Homework</li>
+        <li>Wank</li>
+      </ul>
+    );
+  }
+  ```
