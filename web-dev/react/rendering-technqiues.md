@@ -83,3 +83,21 @@
 
 - Keys must be unique among their siblings.
 - Keys must not change. This means do not generate them while rendering.
+
+### Index-as-Key Anti Pattern
+
+- Sometimes, the index of arrays are used as keys which seems like an elegant solution.
+
+    ```javascript
+    function NameList() {
+        const names = ['Alice', 'Bob', 'Charles'];
+        const nameList = names.map((name, index) => <h2 key={index}>{name}</h2>)
+        return (
+            <>
+                {nameList}
+            </>
+        );
+    }
+    ```
+
+- However, this might cause the keys to change in the future when adding elements, sorting, or changing the list, which will result in UI bugs.
