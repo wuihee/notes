@@ -10,26 +10,26 @@
   ```javascript
   function App() {
     return (
-      <>
-        <h1>My Website</h1>
-        <Contents />
-      </>
+        <>
+            <h1>My Website</h1>
+            <Contents />
+        </>
     );
   }
 
   function Contents() {
     return (
-      <p>Contents of my website...</p>
+        <p>Contents of my website...</p>
     );
   }
   ```
 
-- Close all tags.
+- **Close all tags**.
 
   ```javascript
   function App() {
     return (
-      <input />  // Not <input>.
+        <input />  // Not <input>.
     )
   }
   ```
@@ -39,7 +39,7 @@
   ```javascript
   function App() {
     return (
-      <h1 className="title" textDecoration="underline">My Website</h1>
+        <h1 className="title" textDecoration="underline">My Website</h1>
     );
   }
   ```
@@ -55,11 +55,11 @@
     let description = "This is an avatar image";
 
     return (
-      <img
-        className="avatar"
-        src={avatar}
-        alt={description}
-      />
+        <img
+            className="avatar"
+            src={avatar}
+            alt={description}
+        />
     );
   }
   ```
@@ -70,7 +70,7 @@
   function App() {
     let title = "My Website":
     return (
-      <h1>{title}</h1>
+        <h1>{title}</h1>
     );
   }
   ```
@@ -82,14 +82,14 @@
   ```javascript
   function App() {
     return (
-      <ul style={{
-        backgroundColor: 'black',
-        color: 'pink'
-      }}>
-        <li>Math Homework</li>
-        <li>CS Homework</li>
-        <li>Wank</li>
-      </ul>
+        <ul style={{
+            backgroundColor: 'black',
+            color: 'pink'
+        }}>
+            <li>Math Homework</li>
+            <li>CS Homework</li>
+            <li>Wank</li>
+        </ul>
     );
   }
   ```
