@@ -1,29 +1,58 @@
 # Neural Networks
 
-## Intuition
+## Introduction
 
-- Why do we need neural networks when we have traditional machine learning algorithms? That's because as the size of our data increases, the effectiveness of traditional models don't increase that much. However, huge amounts of data make neural networks very effective.
-- Artificial neural networks take inspiration from biological neural networks, where networks consist of layers and neurons. neurons are basically *activation functions* which takes an input and produces an output. Layers are a group of neurons, which together, produce a vector output given a vector input.
-- The first layers is called the input layer, where we are given a vector of feature inputs. This vector is passed through subsequent hidden layers - the vector input from the previous layer is passed through each neuron.
-- Each neuron is a logistic regression sigmoid function which produces a new value.
-- After everything is passed through all the hidden layers, we arrive at our final output layer with a single value. This value can be converted to a boolean using a 0.5 threshold value.
-- Determining the number of layers and neurons for our model is part of model architecture.
+### Example Problem
 
-## How does this work in qualitatively?
+- Predict whether a newly released T-shirt will be a success.
+- **Input Features**: Price, Production Cost, Marketing, Material
+- **Predictive Features**: Affordability, Awareness, Perceived Quality
 
-- Let's say we are trying to predict if a new t-shirt is going to be a hit.
-- Our input features are: price, production cost, marketing, and material.
-- We think that the features which determine a hit are: affordability, awareness, and perceived quality, each of which we represent with a neuron, and group together in a layer.
-- We pass our initial input: [price, production cost, marketing, material] into the next layer.
-- Looking at the 'affordability' feature, our network will automatically determine which parameters among our input to place importance on. In contrast, for traditional machine learning algorithms, we manually engineer the features.
+### Example Model
+
+- The initial *input layer* consists of a vector containing the input features.
+- This input layer is passed into the next *hidden layer* consisting of 3 neurons, each representing a predictive feature.
+- Each neuron is essentially a sigmoid function, which takes the input vector as an argument and produces a new value. The values created by the neurons in the current layer are then treated as the input vector for the next layer.
+- For example, the neuron representing 'affordability' might place emphasis on the 'price' and 'production cost' input features and less emphasis on the other features.
+- In general, determining the number of neurons and layers is part of model architecture.
+
+### Todo: Visualization
+
+### Terminology
+
+- Neuron
+- Feature Vector
+- Layer (Input, Hidden, Output)
+- Activation
+
+### Machine Learning vs Deep Learning
+
+- As the size of available data increases, traditional machine learning algorithms don't improve in their effectiveness as much as neural networks do.
+- In deep learning algorithms, features are automatically given importance as compared to traditional algorithms where features are manually engineered.
 
 ## Notation
 
-- $\vec{x}$ - Our input features.
-- $g(z) = \frac{1}{1 + e^{-z}}$ - Sigmoid function.
+- $\vec{x}$ - Input vector.
+- $\vec{w}, b$ - Model parameters; weights and bias.
+- $\vec{w}^{[l]}_j, b^{[l]}_j$ - Model parameter's for the $j^{th}$ neuron in the $l^{th}$ layer.
 - $\vec{a}^{[l]}$ - Activation / output vector for the $l^{th}$ layer.
-- $a^{[l]}_j$ - For the $l^{th}$ layer, the $j^{th}$ neuron's activation /output value.
-- $a^{[l]}_j = g(\vec{w}^{[l]} \cdot \vec{a}^{[l - 1]} + b^{[l]}_j)$ - The activation value of the $l^{th}$ layer and the $j^{th}$ value is the sigmoid function of the dot product of the parameters for the $l^{th}$ layer and activation results of the previous layer, plus the bias.
+- $a^{[l]}_j$ - Activation value for the $j^{th}$ neuron in the $l^{th}$ layer.
+
+## Formulas
+
+### Sigmoid Function
+
+Each neuron applies a sigmoid function to its given input.
+
+$g(z) = \frac{1}{1 + e^{-z}}$
+
+$z = \vec{w} \cdot \vec{x} + b$
+
+### Activation Value
+
+The activation value for the $j^{th}$ neuron of the $l^{th}$ layer is given by the sigmoid function of the dot product between the current weights and the activation results of the previous layer, plus the bias.
+
+$a^{[l]}_j = g(\vec{w}^{[l]}_j \cdot \vec{a}^{[l - 1]} + b^{[l]}_j)$
 
 ## TensorFlow Implementation Example
 
