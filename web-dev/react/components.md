@@ -54,3 +54,74 @@
   import Navbar from "./navbar";  // Default export.
   import {Title} from "./title";  // Named export.
   ```
+
+## Passing Data to Components
+
+- We can specify arguments for our components as if they were functions, which we do using the `props` object.
+
+    ```javascript
+    function Button(props) {
+        const buttonStyle = {
+            color: props.color,
+            fontSize: props.fontSize + "px"
+        };
+        return (
+            <button style={buttonStyle}>{props.text}</button>
+        );
+    }
+
+    export default function App() {
+        return (
+            <Button text="click me!" color="red" fontSize={13} />
+            <Button text="click me too!" color="blue" fontSize={14} />
+        );
+    }
+    ```
+
+- We can be more concise in our syntax using destructuring.
+
+    ```javascript
+    function Button({ color, fontSize, label }) {
+        const buttonStyle = {
+            color: color,
+            fontSize: fontSize + "px"
+        };
+        return (
+            <button style={buttonStyle}>{props.label}</button>
+        );
+    }
+    ```
+
+- We can specify default values for props.
+
+    ```javascript
+    Button.defaultProps = {
+        text: "click me!",
+        color: "green",
+        fontSize: 12
+    }
+
+    export default function App() {
+        return (
+            <Button />
+            <Button text="click me too!" fontSize={14} />
+        );
+    }
+    ```
+
+- We can also pass in functions into `props`.
+
+    ```javascript
+    function Button({ handler }) {
+        return (
+            <button onclick={handler}>Go to Link!</button>
+        );
+    }
+
+    export default function App() {
+        const handler = () => window.location.href("www.youtube.com");
+        return (
+            <Button handler={handler} />
+        );
+    }
+    ```

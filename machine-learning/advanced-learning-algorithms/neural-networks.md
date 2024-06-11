@@ -18,14 +18,15 @@
 
 ### Todo: Visualization
 
-### Terminology
+### Terminology ***
 
 - Neuron
-- Feature Vector
+- Feature Vector - The input vector, where each value in the vector corresponds to the value of its respective feature.
 - Layer (Input, Hidden, Output)
 - Activation
+- Forward Propagation
 
-### Machine Learning vs Deep Learning
+### Machine vs Deep Learning
 
 - As the size of available data increases, traditional machine learning algorithms don't improve in their effectiveness as much as neural networks do.
 - In deep learning algorithms, features are automatically given importance as compared to traditional algorithms where features are manually engineered.
@@ -53,16 +54,3 @@ $z = \vec{w} \cdot \vec{x} + b$
 The activation value for the $j^{th}$ neuron of the $l^{th}$ layer is given by the sigmoid function of the dot product between the current weights and the activation results of the previous layer, plus the bias.
 
 $a^{[l]}_j = g(\vec{w}^{[l]}_j \cdot \vec{a}^{[l - 1]} + b^{[l]}_j)$
-
-## TensorFlow Implementation Example
-
-```python
-# Input
-x = np.array([200, 17])
-
-layer_1 = Dense(units=3, activation="sigmoid")
-a1 = layer_1(x)
-
-layer_2 = Dense(units=1, activation="sigmoid")
-a2 = layer_2(a1)
-```
