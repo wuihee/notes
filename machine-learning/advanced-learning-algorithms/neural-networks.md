@@ -16,15 +16,13 @@
 - For example, the neuron representing 'affordability' might place emphasis on the 'price' and 'production cost' input features and less emphasis on the other features.
 - In general, determining the number of neurons and layers is part of model architecture.
 
-### Todo: Visualization
+### Terminology
 
-### Terminology ***
-
-- Neuron
-- Feature Vector - The input vector, where each value in the vector corresponds to the value of its respective feature.
-- Layer (Input, Hidden, Output)
-- Activation
-- Forward Propagation
+- **Neuron** - A single unit which accepts a vector input and runs it through an activation function.
+- **Activation** - The function which a neuron computes on an input.
+- **Feature Vector** - The input vector, where each value in the vector corresponds to the value of its respective feature.
+- **Layer (Input, Hidden, Output)** - A group of neurons consist of a layer in the neural network which outputs a vector.
+- **Forward Propagation** - The process of forwarding the output vectors of each layer to the next.
 
 ### Machine vs Deep Learning
 
