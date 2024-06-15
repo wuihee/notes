@@ -72,3 +72,8 @@ When computing complex mathematical operations, numerical roundoff errors may oc
     logit = model(X)
     f_x = tf.nn.sigmoid(logit)
     ```
+
+## Multi-Label Classification
+
+- For some scenarios like computer vision, we want to detect for multiple labels. For example, buses, cars, pedestrians, etc.
+- We can do this by having our output layer consist of a separate neuron for each distinct label we want to classify.
