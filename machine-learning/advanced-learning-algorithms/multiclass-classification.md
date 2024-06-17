@@ -13,9 +13,12 @@ While logistic regression predicts for a binary classification, softmax classifi
 - Softmax regression, for each category $j$, where $a_j$ is the probability for the $j^{th}$ category and $L$ is the loss function:
 
     $z_j = \vec{w_j} \cdot \vec{x} + b_j$\
-    $a_j = \frac{e^{z_j}}{\sum^{N}_{k=1} e^{z_k}} = P(y = j | \vec{x})$\
+    $a_j = \frac{e^{z_j}}{\sum^{N}_{k=1} e^{z_k}} = P(y = j | \vec{x})$
+
     $L(a_1, ..., a_N, y) = -\log a_N$ if $y = N$\
     Where, $a_1 + a_2 + ... + a_N = 1$
+
+    $J(\vec{w}, b) = -\frac{1}{m}[\sum^{m}_{i = 1} \sum^{N}_{j = 1} 1\{y^{(i)} = j\} \log \frac{e^{z^{(i)}_j}}{\sum^{N}_{k = 1} e^{z^{(i)}_k}}]$
 
 - To use a softmax activation, we specify it for our final ouput layer. The number of units in our output layer will equal to the number of categories we have.
 
@@ -66,7 +69,7 @@ When computing complex mathematical operations, numerical roundoff errors may oc
     model.fit(X, Y, epochs=100)
     ```
 
-- Finally, because our output layer we combine the steps for our loss function, we need to pass our result through a sigmoid function to get our predictions.
+- Finally, because our output layer is a linear layer since we combined the steps for our loss function, we need to pass our prediction result through a sigmoid function to get our predictions.
 
     ```python
     logit = model(X)
