@@ -90,6 +90,7 @@ $a^{[l]}_j = g(\vec{w}^{[l]}_j \cdot \vec{a}^{[l - 1]} + b^{[l]}_j)$
 
 - ReLU is less computationally expensive than the sigmoid function.
 - Additionally, because of the shape of its graph, gradient descent is more effective.
+- It's ability to "turn-off" allows the neural network to "stitch together" different linear functions to create complex graphs to fit the model.
 
 ### Why Use Activation Functions?
 
