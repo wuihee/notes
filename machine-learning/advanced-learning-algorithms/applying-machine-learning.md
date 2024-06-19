@@ -13,3 +13,13 @@
 - Train the model on the train set.
 - Choose the model with the lowest error on the cross-validation set.
 - Evaluate the model's error with the test set.
+
+## Bias & Variance
+
+- A model with high bias (under-fitting) does poorly on the training set and on the cross-validation set.
+- A model with high variance (over-fitting) does well on the training set but a lot worse on the cross-validation set.
+
+### Regularization
+
+- A small $\lambda$ value leads to high variance (over-fitting).
+- A large $\lambda$ value leads to high bias (under-fitting).
