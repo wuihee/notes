@@ -10,7 +10,7 @@
 ## Decision Tree Learning
 
 - **Decision 1**: How do we decide how to construct our tree, i.e. which features do we split on?
-  - A high level of purity refers to the state when all labels on either side of the decision tree is classified correctly.
+  - A high level of purity refers to the state where all labels on a node are of the same class.
   - Therefore, split on features which maximize purity.
 - **Decision 2**: When do we stop splitting our decision tree?
   - Specify a certain depth, where the depth of a tree at a node refers to the number of hops it takes to get there.
