@@ -7,7 +7,7 @@
 - For example, we are trying to classify whether an animal is a cat. Features include, pointy/round ears, whiskers, and face shape. We move down the tree left/right depending on whether our animal has pointy/round ears etc.
 - The goal of the decision tree model is to choose one that best classifies our data.
 
-## Decision Tree Learning
+## Learning Process
 
 - **Decision 1**: How do we decide how to construct our tree, i.e. which features do we split on?
   - A high level of purity refers to the state where all labels on a node are of the same class.
