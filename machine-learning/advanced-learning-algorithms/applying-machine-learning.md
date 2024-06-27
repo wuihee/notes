@@ -57,3 +57,37 @@
     ```
 
 ## Machine Learning Development
+
+### Error Analysis
+
+- Error analysis is the process of manually going through your training examples, classifying them, and figuring out which your model did poorly on.
+- This way, you know which categories of data your model is weak in and you know which areas to prioritize your time.
+
+### Adding Data
+
+- After error analysis, we can improve the areas the model is weak in by adding more data with different techniques.
+- **Data Augmentation**: Modify existing data and add them as new examples. E.g., for an image classification task, we can rotate, skew, or distort images.
+- **Data Synthesis**: Create new examples from scratch. E.g. for a model which reads text, we can generate examples by creating images with different fonts and background colors.
+
+### Transfer Learning
+
+- Transfer learning is a technique used to improve a model's performance, where we first pre-train our model on an existing dataset, and then fine-tune it on our current dataset.
+  - We can either keep the parameters and only fine-tune the output layer.
+  - Or, we can fine-tune all layers.
+- The intuition behind transfer learning is that by pre-training our model, we give it a good starting point. E.g. for an image classification task, the initial hidden layers of the model learn to recognize very basic shapes and contours which are universal for all image recognition.
+- Furthermore, there are already many pre-trained neural networks that can be used as a starting point.
+- However, transfer learning only works for models of the same tasks. E.g. We need to pre-train with images for a computer vision task.
+
+### Full Cycle of a Machine Learning Project
+
+1. Scope Project
+2. Collect Data
+3. Train Model
+4. Deployment
+   - Host on an *inference server* where your application can make API calls to.
+
+## Skewed Datasets
+
+### Error Metrics for Skewed Datasets
+
+- 
