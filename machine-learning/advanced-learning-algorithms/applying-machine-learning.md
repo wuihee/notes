@@ -90,4 +90,33 @@
 
 ### Error Metrics for Skewed Datasets
 
-- 
+- Sometimes, a model's accuracy alone isn't a sufficient analysis of the model's performance.
+  - E.g. We have a model that classifies a rare disease with 99% accuracy which appears impressive.
+  - However, if the disease only appears in 0.5% of the population, if we had a model which simply print "no disease" every time, our accuracy would be at 99.5%.
+- We can use a *confusion matrix* to represent the accuracy of the model:
+
+  |  Actual  |      Positive       |      Negative       |
+  |----------|---------------------|---------------------|
+  | Positive | True Positive (TP)  | False Negative (FN) |
+  | Negative | False Positive (FP) | True Negative (TN)  |
+
+- **Precision**: Of examples that were predicted to be positive, how many were actually positive?
+
+  $precision = \frac{TP}{TP + FP}$
+
+- **Recall**: Of examples that were actually positive, how many were accurately predicted?
+
+  $recall = \frac{TP}{TP + FN}$
+
+### Precision / Recall Tradeoff
+
+- Often, we need to find a tradeoff between precision and recall.
+  - E.g. If our rare disease is extremely deadly, we would want a high level of recall, because we wouldn't want to miss out on any cases.
+  - On the other hand, if our rare disease is mild, we would go for a high precision, so that we only bother the patient when we know for sure they have the disease.
+- We can prioritize precision / recall by adjusting a threshold with which we use for our classification.
+  - If we set a high threshold (e.g. 0.9), our algorithm will be very precise and correctly identify almost all the examples. However, it may miss out on many.
+  - However, if we set a low threshold (e.g. 0.1), our algorithm will have a high recall. It will catch almost all the correct examples, but also produce a lot of false positives.
+- The $F1 score$ is a way to combine precision and recall values, to provide a single number which to evaluate our model. It uses a *harmonic mean* to give more emphasis to lower values.
+
+  $F_1 = \frac{1}{\frac{1}{2}(\frac{1}{P} + \frac{1}{R})}$\
+  $F_1 = \frac{2PR}{P + R}$
