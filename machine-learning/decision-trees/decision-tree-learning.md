@@ -44,3 +44,25 @@
 - Information Gain:
 
     $H(p_1^{root}) - (w^{left}H(p_1^{left}) + w^{right}H({p_1^{right}}))$
+
+## Continuous Valued Features
+
+- Some features can be a continuous range of numbers (e.g. height, weight) which make it difficult to split on because we don’t have clear categories.
+- In such cases, we can try a threshold to split the data on, and calculate the information gain from that split.
+- We can then try all possible splits, and take the one which gives us the highest information gain.
+
+![Continuous Valued Features Example](../images/continuous-valued-features.png)
+
+## Regression Trees
+
+- We can generalize decision trees to predict for regression problems, i.e. a continuous range of values (e.g. height, weight, price, etc.)
+- Instead of calculating entropy and information gain, we decide on how we split the tree by calculating the loss in variance.
+- We calculate the sum of the weighted variance of the left and right sub-trees. Then, we can calculate the loss in variance from the root node, and split on the feature which gives the greatest loss.
+
+    $V(root) - (w^{left} V(left) + w^{right} V(right))$
+
+### Variance
+
+- **Variance**: Average of the of standard deviations (i.e. squared differences from the mean).
+
+    $s^2 = \frac{\sum^{n}_{i = 1} (x - \bar{x})^2}{n - 1}$
