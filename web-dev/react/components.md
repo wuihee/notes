@@ -125,3 +125,25 @@
         );
     }
     ```
+
+### Passing JSX as Children
+
+- It is possible to nest components:
+
+  ```javascript
+  <Parent>
+    <Child />
+  </Parent>
+  ```
+
+- The parent component, `Parent`, will receive the child component, `Child` in a prop called `children`. We can then render the child like so.
+
+  ```javascript
+  function Parent({ children }) {
+    return (
+      <div>
+        {children}
+      </div>
+    )
+  }
+  ```
