@@ -22,3 +22,31 @@
 - A problem is that a lot times, our decision trees end up looking very similar.
 - Therefore, at each node if we have $n$ features to choose from to split on, pick a feature from a smaller subset of $k$ features, where $k < n$.
   - Typically, $k = \sqrt{n}$
+
+## XGBoost
+
+- XGBoost is the preferred tree ensemble algorithm which instead of sampling with replacement, assigns weights to examples. This makes it more likely for training examples that were misclassified by earlier decision trees to be chosen.
+
+  ```python
+  from xgboost import XGBClassifier
+
+  model = XGBClassifier()
+
+  model.fit(X_train, y_train)
+  y_pred = model.predict(X_test)
+  ```
+
+## When to Use Decision Trees
+
+### Decision Tree Considerations
+
+- Works well with structured / tabular data, like an excel sheet.
+- Not good with unstructured data (e.g. audio, images, text).
+- Small decision trees have the advantage of being human interpretable.
+
+### Neural Network Considerations
+
+- Works well with all data.
+- Slower than decision trees.
+- Works with transfer learning.
+- When building a system with multiple models working together, it may be easier to string together neural networks than decision trees.
