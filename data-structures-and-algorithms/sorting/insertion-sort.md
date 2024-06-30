@@ -25,3 +25,8 @@ def insertion_sort(array):
 - **Space Complexity**: $O(1)$
 
 ## Proof of Correctness
+
+- **Loop Invariant**: At the start of each iteration of the for loop, subarray `A[:i]` is in sorted order.
+- **Initialization**: At the start, the subarray only contains a single element so it is already sorted.
+- **Maintenance**: At each iteration, we move the current element to the left until it is in its correct place. Therefore, incrementing $i$ preserves the loop invariant that `A[:i]` is sorted.
+- **Termination**: The loop terminates when $i = n$. If we substitute this into our loop invariant, we can see that the entire array `A[:n]` is sorted.
