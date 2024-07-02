@@ -8,6 +8,12 @@
   - *Retain* data between renders.
   - *Trigger* React to re-render components.
 
+## Hooks
+
+- In React, any function starting with "`use`", is a *Hook*.
+- Hooks are special functions that are only available while React is rendering.
+- They can only be used at the top of your components, like an import statement.
+
 ## `useState` Hook
 
 - The `useState` hook provides:
@@ -125,8 +131,28 @@
 - **Tree Diffing**: React uses a virtual DOM to first update the UI and then compares it to the actual DOM and calculates the minimum changes needed to be made.
 - **Batching**: React batches multiple changes into a single update which reduces the number of updates to the virtual DOM, and in turn, the real DOM.
 
-## Hooks
+## State as a Snapshot
 
-- In React, any function starting with "`use`", is a *Hook*.
-- Hooks are special functions that are only available while React is rendering.
-- They can only be used at the top of your components, like an import statement.
+- When ever the `useState` function in a component is called, a re-render is triggered.
+- The component the returns a *snapshot* of the JSX with the current *state*. The component's state actually lives in React's backend.
+
+    ```js
+    import { useState } from 'react';
+
+    export default function Counter() {
+        let [number setNumber] useState(0);
+
+        return (
+            <>
+                <h1>{number}</h1>
+                <button onClick={() => {
+                    setNumber(number + 1);
+                    setNumber(number + 1);
+                    setNumber(number + 1);
+                }}>+3</button>
+            </>
+        )
+    }
+    ```
+
+- In the example below, when the button is clicked, `number` will only display 1, and not 3. This is because setting state only changes `number` for the next render - in each call to `setNumber(number + 1)`, React doesn't update the state immediately, but prepares to change `number` to 1 on the next render.
