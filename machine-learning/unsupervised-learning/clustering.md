@@ -38,3 +38,16 @@
 
 - When we assign points to cluster centroids, we are trying to keep  $\mu_1, ..., \mu_k$ fixed and minimize $J$.
 - Likewise, by moving the cluster centroids to the average of its points, we are keeping $c^{(i)}, ..., c^{(m)}$ fixed while minimizing $J$.
+
+## Initializing K-Means
+
+- To select our cluster centroids:
+  - Choose $K < m$.
+  - Randomly pick $K$ training examples and set $\mu_1, ..., \mu_k$ equal to these examples.
+- One problem that will be encountered for randomly assigning cluster centroids is that they may converge at non-optimal locations - in other words, our cost function $J$ will reduce to the local minimum and not the absolute minimum.
+- To fix this, we should run K-means 50-1000 times and choose the result with the lowest cost function.
+
+## Choosing the Number of Clusters
+
+- Elbow Technique: Plot a cluster-cost graph and choose the number of clusters at the sharpest “elbow”. A little arbitrary and may not be effective.
+- Instead, choose the number of clusters based on how well they perform on your (downstream) later purpose.
