@@ -54,3 +54,24 @@ y=\left\{
 $$
 
 - Because our dataset will be very skewed, we may consider using precision / recall / $F_1$-score to evaluate our model.
+
+## Anomaly Detection vs Supervised Learning
+
+- Anomaly detection should be used when we don't really know what future anomalies will look like, or that there are many different types of anomalies.
+- Additionally, anomaly detection should be used when there are a very small number of positive ($y = 1$) examples. E.g. Manufacturing (finding new, unseen defects), fraud detection (new fraud techniques), etc.
+- On the other hand, supervised learning should be used when there are a very large number of both positive and negative examples - we know with certainty when our examples will look like. E.g. Classifying weather, diseases, etc.
+
+## Choosing What Features to Use
+
+- Choosing which features to use is extremely important in anomaly detection, because the model usually doesn't have enough data to figure out which data to ignore.
+
+### Making Data More Gaussian
+
+- It helps to make features more Gaussian, i.e. look like a bell-shaped curve.
+- This can be done by transforming the feature with a logarithmic function or a square root functions. E.g. $x \rArr \log(x + c)$, $x \rArr x^{\frac{1}{2}}$ etc.
+- We can plot a histogram with `plt.hist(x)` to see how our data looks.
+
+### Error Analysis for Anomaly Detection
+
+- A single feature on its own may not signal the example to be anomalous - we may have to combine features.
+- For example, when detecting anomalous servers, it may be usual for servers to have a very high CPU load and very low network traffic, but not both at the same time. So it makes sense to create a new feature $x = \frac{\text{CPU Load}}{\text{Network Traffic}}$.
