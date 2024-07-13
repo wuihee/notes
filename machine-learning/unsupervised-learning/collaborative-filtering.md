@@ -15,8 +15,12 @@
   - $\vec{w}^{(j)}$, $b^{(j)}$ - Parameters for the $j^{th}$ user.
   - $\vec{x}^{(i)}$ - Feature vector for the $i^{th}$ item.
   - $m^{(j)}$ - Number of movies rated by the $j^{th}$ user.
-- To predict for
+- To predict whether a user will like an item $i$, we can use a linear regression model:
 
-$w^{(j)} \cdot x^{(i)} + b^{(j)}$
+  $w^{(j)} \cdot x^{(i)} + b^{(j)}$
 
-$\text{min}_{w^{(j)}, b^{(j)}} \{J(w^{(j)}, b^{(j)})\} = \frac{1}{2m^{(j)}} \sum_{i:r(i, j) = 1} (w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i, j)})^2$
+- To learn $w^{(j)}$, $b^{(j)}$, we can find the minimum of the cost function:
+
+  $\text{min}_{w^{(j)}, b^{(j)}} \{J(w^{(j)}, b^{(j)})\} = \frac{1}{2m^{(j)}} \sum_{i:r(i, j) = 1} (w^{(j)} \cdot x^{(i)} + b^{(j)} - y^{(i, j)})^2 + \frac{\lambda}{2m^{(j)}} \sum^{n}_{k = 1} (w_k^{(j)})^2$
+
+## Collaborative Filtering Algorithm
