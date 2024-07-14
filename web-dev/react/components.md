@@ -147,3 +147,14 @@
     )
   }
   ```
+
+## Keeping Components Pure
+
+- Components should be like math functions - given the same input, they should always have the same output, with no *side effects*.
+- A side effect occurs when some external thing is changed.
+- In *strict mode*, React renders components twice to catch errors and make sure nothing changes with multiple renders.
+
+## UI as a Tree
+
+- React models the relationship between components as a tree, like the DOM.
+- It also does the same for imports.
