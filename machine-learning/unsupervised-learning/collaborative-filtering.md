@@ -54,3 +54,36 @@ $$w_i^{(j)} = w_i^{(j)} - \alpha \frac{\partial}{\partial w_i^{(j)}} J(w, b, x)$
 $$b^{(j)} = b^{(j)} - \alpha \frac{\partial}{\partial b^{(j)}} J(w, b, x)$$
 
 $$x_k^{(i)} = x_k^{(i)} - \alpha \frac{\partial}{\partial x_k^{(i)}} J(w, b, x)$$
+
+## Binary Labels
+
+- We can adapt collaborative filtering for the scenario where instead of a user's rating, we want binary labels, meaning the user either "likes" or "dislikes" an item.
+  - "Liking" / "disliking" an item refers refers to whether the user engaged with the item.
+  - E.g. Did user $j$ click / purchase / like the item in question?
+- Meaning of ratings:
+  - 1 - Engaged with after showing the item.
+  - 0 - Did not engage with the item.
+  - ? - Did not see the item.
+
+### From Regression to Binary Classification
+
+- Previously, rating $y^{(i, j)} = \vec{w}^{(j)} \cdot \vec{x}^{(i)} + b^{(j)}$.
+- For binary labels, the prediction that the probability of $y^{(i, j)} = 1$ is given by $g(\vec{w}^{(j)} \cdot \vec{x}^{(i)} + b^{(j)})$, where $g(z) = \Large \frac{1}{1 + e^{-z}}$ (i.e. logistic regression).
+
+### Cost Function for Binary Application
+
+- Loss function for single example:
+
+$$L(f_{\vec{w}, b, \vec{x}}(\vec{x}), y^{(i, j)}) = -y^{(i, j)}\log (f_{\vec{w}, b, \vec{x}}(\vec{x})) - (1 - y^{(i, j)})\log (1 - f_{\vec{w}, b, \vec{x}}(\vec{x}))$$
+
+- Cost function for binary application:
+
+$$J(\vec{w}, b, \vec{x}) = \sum_{(i, j): r(i, j) = 1} L(f_{\vec{w}, b, \vec{x}}(\vec{x}), y^{(i, j)})$$
+
+## Mean Normalization
+
+- In the case where we have a new user who hasn't made any ratings, our regularization terms will try to minimize their weights, making it 0. As a result, all of their predictions will be 0.
+- We can use *mean normalization* to allow our algorithm to give new users better predictions.
+- Let $\vec{\mu}$ be the average rating of each item. We can then normalize all ratings by subtracting $\vec{\mu}$ from them.
+- As such, to predict movie $i$ for user $j$, our new formula is $w^{(j)} \cdot x^{(i)} + b^{(j)} + \mu_i$ because we can't have negative predictions.
+- As a result, for new users, when $w^{(j)} = 0$ and $b^{(j)} = 0$, $y^{(i, j)} = \mu_i$ which is a more reasonable estimate.
