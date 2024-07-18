@@ -87,3 +87,10 @@ $$J(\vec{w}, b, \vec{x}) = \sum_{(i, j): r(i, j) = 1} L(f_{\vec{w}, b, \vec{x}}(
 - Let $\vec{\mu}$ be the average rating of each item. We can then normalize all ratings by subtracting $\vec{\mu}$ from them.
 - As such, to predict movie $i$ for user $j$, our new formula is $w^{(j)} \cdot x^{(i)} + b^{(j)} + \mu_i$ because we can't have negative predictions.
 - As a result, for new users, when $w^{(j)} = 0$ and $b^{(j)} = 0$, $y^{(i, j)} = \mu_i$ which is a more reasonable estimate.
+
+## Finding Related Items
+
+- To find other items related to item $i$, we can find item $k$ with features $\vec{x}^{(k)}$ similar to $\vec{x}^{(i)}$.
+- We can determine the similarity between items by finding the squared distance between the item's feature vectors:
+
+$$\sum^n_{l = 1} (x_l^{(k)} - x_l^{(i)})^2 = ||x_l^{(k)} - x_l^{(i)}||^2$$
