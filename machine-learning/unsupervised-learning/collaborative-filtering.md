@@ -94,3 +94,37 @@ $$J(\vec{w}, b, \vec{x}) = \sum_{(i, j): r(i, j) = 1} L(f_{\vec{w}, b, \vec{x}}(
 - We can determine the similarity between items by finding the squared distance between the item's feature vectors:
 
 $$\sum^n_{l = 1} (x_l^{(k)} - x_l^{(i)})^2 = ||x_l^{(k)} - x_l^{(i)}||^2$$
+
+## TensorFlow Implementation
+
+- We have to implement a custom training loop for collaborative filtering. However, TensorFlow's API allows us to automatically calculate the gradient of our cost function.
+
+    ```python
+    import tensorflow as tf
+    from tensorflow import keras
+
+    W = tf.Variable(tf.random.normal((num_users, num_features), dtype=tf.float64), name="W")
+    X = tf.Variable(tf.random.normal((num_movies, num_features), dtype=tf.float64), name="X")
+    b = tf.Variable(tf.random.normal((1, num_users), dtype=tf.float64), name="b")
+
+    optimizer = keras.optimizers.Adam(learning_rate=1e-1)
+    epochs = 200
+    lambda_ = 1
+    for _ in range(epochs):
+        with tf.GradientTape() as tape:
+            cost_value = cost_func(X, W, b, Y_norm, R, lambda_)
+
+        # Use the gradient tape to automatically retrieve the gradients of the
+        # trainable variables with respect to the loss.
+        gradients = tape.gradient(cost_value, [X, W, b])
+
+        # Run one step of gradient descent by updating the value of the variables
+        # to minimize the loss.
+        optimizer.apply_gradients(zip(gradients), [X, W, b])
+
+    # Make predictions.
+    p = np.matmul(X.numpy(), W.numpy().T) + b.numpy()
+    
+    # Restore the mean.
+    pm = p + Y_mean
+    ```
