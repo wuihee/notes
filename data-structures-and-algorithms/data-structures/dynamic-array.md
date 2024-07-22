@@ -1,5 +1,7 @@
 # Dynamic Array
 
+## Overview
+
 - A *dynamic array* is an array-like data structure that allows elements to be added and removed, and whose size can grow.
 - The dynamic array relies on resizing an underlying array data structure to store elements.
 
