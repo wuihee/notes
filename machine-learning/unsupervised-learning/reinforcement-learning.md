@@ -31,3 +31,24 @@
 - Thus, the goal of reinforcement learning is to find a policy which maximizes the return (i.e. the reward).
 - The *Markov Decision Process (MDP)* is the process of reinforcement learning previously described - the iterative cycle of making an action based on the current state, $\pi(s) = a$, and observing the reward $R$ and the new state $S'$.
   - *Markov* means that only the current state matters, and how we got to the current state is irrelevant.
+
+## State-Value Action Function
+
+- The *state-value action function* $Q(s, a)$, defines the best return value you can get after making action $a$ at state $s$.
+- Thus, the best possible action from any state $s$ is the one that maximizes the state-value action function, $\text{max}_{a}Q(S, a)$
+- If we can compute $Q(S, a)$ for every state, we have a good way of determining the policy $\pi(s)$ because we will know what is the best action to take.
+
+## Bellman Equation
+
+- The *Bellman Equation* defines a recursive relation to calculate the optimal return at state $s$ and taking action $a$.
+
+$$Q(s, a) = R(s) + \gamma \text{ max}_{a'} Q(s', a')$$
+
+### Bellman Equation Notation
+
+- $s$ - Current state.
+- $a$ - Current action.
+- $s'$ - State after taking action $a$.
+- $a'$ - Action taken in state $s'$.
+- $R(s)$ - Reward at state $s$.
+- $Q(s, a)$ - The return value if you take action $a$ at state $s$ and continue optimally after that.
