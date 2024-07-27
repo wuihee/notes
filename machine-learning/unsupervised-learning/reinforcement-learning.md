@@ -52,3 +52,5 @@ $$Q(s, a) = R(s) + \gamma \text{ max}_{a'} Q(s', a')$$
 - $a'$ - Action taken in state $s'$.
 - $R(s)$ - Reward at state $s$.
 - $Q(s, a)$ - The return value if you take action $a$ at state $s$ and continue optimally after that.
+
+## Random (Stochastic) Environment
