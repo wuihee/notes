@@ -71,3 +71,44 @@ $$Q(s, a) = R(s) + \gamma \text{ max}_{a'} Q(s', a')$$
 - The Bellman Equation revised has the current reward $R(s)$ plus the expected value of the future return:
 
 $$Q(s, a) = R(s) + \gamma E[\text{max}_{a'} Q(s', a')]$$
+
+## Continuous State Spaces
+
+- Typically, state is not just a set of discrete values, but a *continuous* state of values.
+  - E.g. If the mars rover can move between states 1 to 6, a continuous state would mean it could take on non-discrete values like 2.7, etc.
+- Therefore, it is useful to represent state as a vector.
+  - E.g. The state of a moving truck can be represented as a vector containing information about its x-position, y-position, orientation, x-velocity, y-velocity, and angular velocity: $<x, y, \theta, \dot{x}, \dot{y}, \dot{\theta}>$
+
+## Reinforcement Learning Problem Example: Lunar Lander
+
+- In this problem, the goal of reinforcement learning is to simulate the landing of a lunar lander. This is done by taking actions over time.
+
+### Lunar Lander Actions
+
+- Do Nothing
+- Fire Left Thruster
+- Fire Right Thruster
+- Fire Main Thruster
+
+### Lunar Lander State Space
+
+$<x, y, \dot{x}, \dot{y}, \theta, \dot{\theta}, l, r>$
+
+- $x$ - Horizontal Position
+- $y$ - Vertical Position
+- $\dot{x}$ - Horizontal Velocity
+- $\dot{y}$ - Vertical Velocity
+- $\theta$ - Angle of Tilt
+- $\dot{\theta}$ - Angular Velocity
+- $l$ - Left Leg Touching Ground? (0 or 1)
+- $r$ - Right Leg Touching Ground? (0 or 1)
+
+### Lunar Lander Reward Function
+
+- Getting to landing pad: 100 to 140
+- Additional reward for moving toward / away from pad.
+- Crash: -100
+- Soft landing: +100
+- Leg grounded: +10
+- Fire main engine: -0.3
+- Fire side thruster: -0.03
