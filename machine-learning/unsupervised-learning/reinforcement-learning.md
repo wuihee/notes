@@ -54,3 +54,20 @@ $$Q(s, a) = R(s) + \gamma \text{ max}_{a'} Q(s', a')$$
 - $Q(s, a)$ - The return value if you take action $a$ at state $s$ and continue optimally after that.
 
 ## Random (Stochastic) Environment
+
+- **Context**: In a *stochastic environment*, due to randomness, there is a chance that our algorithm doesn't perform the action we want it to take.
+- Because of this, the return is now probabilistic, which means we would be trying to maximize the *average* or *expected value* of the return.
+  - E.g. Given that we are in state `3` (table below) and we want to move left, in a stochastic environment, there could be a `0.9` chance of moving left and a `0.1` chance of moving right.
+  - If our algorithm is trying to move to state `0`, one path it could take is: 3 → 2 → 1 → 2 → 1 → 0.
+  - Another path could be: 3 → 2 → 1 → 0.
+  - As a result, the return would be different for different paths, which is why our return value is now probabilistic.
+
+  | Reward | 100 | 0 | 0 | 0 | 0 | 40 |
+  |--------|-----|---|---|---|---|----|
+  | State  | 0   | 1 | 2 | 3 | 4 | 5  |
+
+- Hence, our $\text{Expected Return} = \text{Average}(R_1 + \gamma R_2 + \gamma^2 + R_3 + ...)$.
+- The revised goal of reinforcement learning in a stochastic environment would be to choose a *policy* $\pi$ which maximizes the *expected* return.
+- The Bellman Equation revised has the current reward $R(s)$ plus the expected value of the future return:
+
+$$Q(s, a) = R(s) + \gamma E[\text{max}_{a'} Q(s', a')]$$
