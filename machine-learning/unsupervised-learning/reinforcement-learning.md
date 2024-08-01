@@ -70,7 +70,7 @@ $$Q(s, a) = R(s) + \gamma \text{ max}_{a'} Q(s', a')$$
 - The revised goal of reinforcement learning in a stochastic environment would be to choose a *policy* $\pi$ which maximizes the *expected* return.
 - The Bellman Equation revised has the current reward $R(s)$ plus the expected value of the future return:
 
-$$Q(s, a) = R(s) + \gamma E[\text{max}_{a'} Q(s', a')]$$
+$$Q(s, a) = R(s) + \gamma \ E[\text{max}_{a'} Q(s', a')]$$
 
 ## Continuous State Spaces
 
@@ -112,3 +112,24 @@ $<x, y, \dot{x}, \dot{y}, \theta, \dot{\theta}, l, r>$
 - Leg grounded: +10
 - Fire main engine: -0.3
 - Fire side thruster: -0.03
+
+## Learning The State-Value Function
+
+- The main idea is to input a *state-action pair* $\vec{x} = <s, a>$ into a neural network which will output the return $y = Q(s, a)$.
+  - E.g. For the lunar landing example, $\vec{s} = <x, y, \theta, ...>$ and $\vec{a} = <1, 0, 0, 0>$, where $\vec{a}$ is a one-hot-encoded vector representing the action to be taken.
+- In other words, at a given state $s$, we can use our neural network to calculate the return for different actions and pick the best action $a$ which maximizes return.
+- From the Bellman Equation $Q(s, a) = R(s) + \gamma \text{max}_{a'} Q(s', a')$ let:
+  - Training example $x$ be $Q(s, a)$
+  - Target value $y$ be $R(s) + \gamma \ \text{max}_{a'} Q(s', a')$.
+- How do we generate our training set? At each state, we can take a random action which will given us a reward and the next state, where the $i^{\text{th}}$ iteration can be represented as: $(s^{(i)}, a^{(i)}, R(s^{(i)}), s'^{(i)})$, where:
+  - Training example $x^{(i)} = (s^{(i)}, a^{(i)})$
+  - Target value $y^{(i)} = R(s^{(i)}) + \gamma \ \text{max}_{a'} Q(s'^{(i)}, a')$
+  - Note: Initially, we don't know the $Q$ function but we start with a random guess and improve it over time.
+
+### Reinforcement Learning Algorithm
+
+- Initialize a neural network randomly as guess of $Q(s, a)$.
+- Repeatedly:
+  - Take actions in the lunar lander to get $(s, a, R(s), s')$ and store 10,000 most recent examples in the *replay buffer*.
+  - Train the neural network on 10,000 most recent examples using $x = (s, a)$ to predict $y = R(s) + \gamma \ \text{max}_{a'}Q(s', a')$, where the result of our new neural network is $Q_{\text{new}}$ such that $Q_{\text{new}} \approx y$.
+  - Set $Q = Q_{\text{new}}$.
