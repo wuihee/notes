@@ -128,8 +128,25 @@ $<x, y, \dot{x}, \dot{y}, \theta, \dot{\theta}, l, r>$
 
 ### Reinforcement Learning Algorithm
 
-- Initialize a neural network randomly as guess of $Q(s, a)$.
+- Initialize a neural network randomly which represents our guess of $Q(s, a)$.
 - Repeatedly:
   - Take actions in the lunar lander to get $(s, a, R(s), s')$ and store 10,000 most recent examples in the *replay buffer*.
   - Train the neural network on 10,000 most recent examples using $x = (s, a)$ to predict $y = R(s) + \gamma \ \text{max}_{a'}Q(s', a')$, where the result of our new neural network is $Q_{\text{new}}$ such that $Q_{\text{new}} \approx y$.
   - Set $Q = Q_{\text{new}}$.
+
+### Improved Neural Network Architecture
+
+- It would be more efficient if instead of passing the state-action pair $(s, a)$ into our network, we could just pass state $s$ and have our network output all the different possible $Q(s, a)$.
+  - E.g. For our lunar lander example, passing in $s$ into our network would give us four values: $Q(s, \text{main})$, $Q(s, \text{left})$, $Q(s, \text{right})$, $Q(s, \text{nothing})$.
+- The number of units final layer of our neural network should correspond to the number of possible actions.
+
+### $\epsilon$-Greedy Policy
+
+- **Question**: When generating the training set for reinforcement learning, what are the best actions to take?
+- Picking random actions is inefficient.
+- The $\epsilon$-greedy policy involves choosing the action which maximizes $Q(s, a)$ an $\epsilon$ amount of time, and a completely random action for the remaining choices.
+  - E.g. 95% of the time we can choose to maximize $Q(s, a)$ (exploitation), while 5% of the time choose a random action (exploration).
+  - In this case, $\epsilon = 0.95$.
+- Our neural networks could be stuck with suboptimal parameters and making the occasional random choice could help escape out of that.
+  - E.g. Our neural network thinks that firing the main thrusters is always a bad idea.
+- Another approach is to start with a high value of $\epsilon$ and slowly decrease it.
