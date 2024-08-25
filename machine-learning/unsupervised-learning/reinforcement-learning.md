@@ -150,3 +150,22 @@ $<x, y, \dot{x}, \dot{y}, \theta, \dot{\theta}, l, r>$
 - Our neural networks could be stuck with suboptimal parameters and making the occasional random choice could help escape out of that.
   - E.g. Our neural network thinks that firing the main thrusters is always a bad idea.
 - Another approach is to start with a high value of $\epsilon$ and slowly decrease it.
+
+## Mini-Batching
+
+- If the size of the training set $m$ is very large, gradient descent becomes very slow.
+  - E.g. During linear regression if $m = 100000000$, every step of gradient descent requires iterating over 100,000,000 training examples.
+  - Therefore to reduce the number of iterations, at each step of gradient descent we can train our algorithm on a subset of our training of size $m’$.
+  - E.g. $m’ = 1000$.
+  - But because each mini-batch of training examples may not be representative of the entire training set, gradient descent at each step will be less accurate.
+  - In reinforcement learning, mini-batching can improve efficiency by selecting a subset of the training examples in the replay buffer to train our neural network i’m at each iteration.
+
+## Soft Updates
+
+- In reinforcement learning, after each training iteration, we update our neural network with the newly trained one:
+$$Q = Q_{\text{new}}$$
+- However, this might be problematic if the newly trained network performs worse than our original one.
+- Hence, using *soft updates*, we only update our network with a portion of the newly trained one, allowing the network to converge more reliably.
+  - E.g. Given $w$ is our original network’s parameter and $w_{\text{new}}$ is our newly trained parameter:
+$$w = 0.01w_{\text{new}} + 0.99w$$
+  - Where $0.01$ and $0.99$ are hyper-parameters that can be adjusted.
